@@ -3,6 +3,7 @@ import { Typography, Paper, Box } from '@mui/material'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import { useTranslations } from '../../utils/useTranslations'
 
 interface Photo {
   img: string;
@@ -10,6 +11,7 @@ interface Photo {
 }
 
 const Pictures: React.FC = () => {
+  const { t } = useTranslations()
   const [photos, setPhotos] = useState<Photo[]>([]);
 
   useEffect(() => {
@@ -54,7 +56,7 @@ const Pictures: React.FC = () => {
 
   return (
     <Paper elevation={3} sx={{ p: 3, my: 2 }}>
-      <Typography variant="h4" gutterBottom>Photos</Typography>
+      <Typography variant="h4" gutterBottom>{t('PICTURES')}</Typography>
       <Box sx={{ maxWidth: '100%', margin: 'auto' }}>
         <Slider {...settings}>
           {photos.map((photo, index) => (

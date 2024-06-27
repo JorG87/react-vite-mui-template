@@ -1,0 +1,20 @@
+export type TranslationKey = 
+  | 'ABOUT_US'
+  | 'SERVICE_AREA'
+  | 'PICTURES'
+  | 'REVIEWS'
+  | 'BUSINESS_HOURS'
+  | 'ABOUT_US_DESCRIPTION'
+  | 'ABOUT_US_TECHNICIANS'
+  | 'ABOUT_US_MISSION'
+  | 'ABOUT_US_YEARS_BUSINESS'
+  | 'ABOUT_US_LICENSE'
+  | 'ABOUT_US_INSURED'
+  | 'ABOUT_US_FAMILY_OWNED'
+  | 'ABOUT_US_EMERGENCY_SERVICES'
+  | 'ABOUT_US_REPAIRS_GUARANTEED'
+  | 'GOOGLE_RATING'
+
+export type Translations = {
+  [key in TranslationKey]: string;
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Typography, Paper, Box, Rating, Stack, Avatar, Button, Divider, Pagination } from '@mui/material'
 import GoogleIcon from '@mui/icons-material/Google'
 import { MainProps } from '../../common/entities'
+import { useTranslations } from '../../utils/useTranslations'
 
 // Helper function to generate random reviews
 const generateReviews = (count: number) => {
@@ -24,6 +25,7 @@ const generateReviews = (count: number) => {
 }
 
 const Reviews: React.FC<MainProps> = (props: MainProps) => {
+  const { t } = useTranslations()
   const state = props.state ?? null
   const { PLACE_ID } = state || { GOOGLE_PLACE_ID: '' }
 
@@ -49,7 +51,7 @@ const Reviews: React.FC<MainProps> = (props: MainProps) => {
       <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
         <GoogleIcon sx={{ mr: 1, color: '#4285F4' }} />
         <Typography variant="h6" component="span">
-          Google Rating
+          {t('GOOGLE_RATING')}
         </Typography>
       </Box>
       

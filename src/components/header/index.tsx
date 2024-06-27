@@ -1,10 +1,15 @@
-import React, { FC, useState, useEffect } from 'react'
-import { AppBar, Toolbar, Tabs, Tab, useScrollTrigger, Box, Avatar } from '@mui/material'
-import DarkModeToggle from './DarkModeToggle'
+import { AppBar, Avatar, Box, IconButton, Tab, Tabs, Toolbar, Tooltip, useScrollTrigger } from '@mui/material'
+import React, { FC, useEffect, useState } from 'react'
 import logoSrc from '../../assets/Logo-Layer-3..png'
+import DarkModeToggle from './DarkModeToggle'
+import { useLanguage } from '../../contexts/LanguageContext'
+import { TranslationKey } from '../../types/translations'
+import { useTranslations } from '../../utils/useTranslations'
+
+import { ESFlag, USFlag } from '../flagicons'
 
 interface HeaderProps {
-  sections: string[]
+  sections: TranslationKey[]
 }
 
 const Header: FC<HeaderProps> = ({ sections }) => {
@@ -13,6 +18,15 @@ const Header: FC<HeaderProps> = ({ sections }) => {
     disableHysteresis: true,
     threshold: 0,
   })
+
+  const { language, setLanguage } = useLanguage()
+  const { t } = useTranslations()
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'es' : 'en')
+  }
+
+  const FlagIcon = language === 'en' ? USFlag : ESFlag
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
@@ -67,10 +81,15 @@ const Header: FC<HeaderProps> = ({ sections }) => {
           scrollButtons="auto"
         >
           {sections.map((section) => (
-            <Tab key={section} label={section} />
+            <Tab key={section} label={t(section)} />
           ))}
         </Tabs>
         <Box flexGrow={1} />
+        <Tooltip title={language === 'en' ? 'Current language: English' : 'Idioma actual: Español'}>
+          <IconButton color="inherit" onClick={toggleLanguage} sx={{ padding: 0, mr: 5 }}>
+            <FlagIcon width={24} height={24} />
+          </IconButton>
+        </Tooltip>
         <DarkModeToggle />
       </Toolbar>
     </AppBar>

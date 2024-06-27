@@ -10,8 +10,10 @@ import Reviews from './components/reviews'
 import ServiceArea from './components/servicearea'
 import ReturnToTop from './components/returntotop'
 import { MainProps } from './common/entities'
+import { LanguageProvider } from './contexts/LanguageContext'
+import { TranslationKey } from './types/translations'
 
-const sections = ['About Us', 'Service Area', 'Pictures', 'Reviews', 'Business Hours']
+const sections: TranslationKey[] = ['ABOUT_US', 'SERVICE_AREA', 'PICTURES', 'REVIEWS', 'BUSINESS_HOURS']
 
 const App: React.FC = () => {
   const [state, setState] = useState<MainProps['state']>(null)
@@ -26,20 +28,22 @@ const App: React.FC = () => {
   }, [])
 
   return (
-    <Root>
-      <Header sections={sections} />
-      <Container maxWidth="lg">
-        <Box mt={8}>
-          <Box id="about-us"><AboutUs state={state} /></Box>
-          <Box id="service-area"><ServiceArea /></Box>
-          <Box id="pictures"><Pictures /></Box>
-          <Box id="reviews"><Reviews state={state} /></Box>
-          <Box id="business-hours"><BusinessHours state={state} /></Box>
-          <Copyright />
-        </Box>
-        <ReturnToTop />
-      </Container>
-    </Root>
+    <LanguageProvider>
+      <Root>
+        <Header sections={sections} />
+        <Container maxWidth="lg">
+          <Box mt={8}>
+            <Box id="about_us"><AboutUs state={state} /></Box>
+            <Box id="service_area"><ServiceArea /></Box>
+            <Box id="pictures"><Pictures /></Box>
+            <Box id="reviews"><Reviews state={state} /></Box>
+            <Box id="business_hours"><BusinessHours state={state} /></Box>
+            <Copyright />
+          </Box>
+          <ReturnToTop />
+        </Container>
+      </Root>
+    </LanguageProvider>
   )
 }
 

@@ -33,7 +33,7 @@ const App: React.FC = () => {
           <Box id="about-us"><AboutUs state={state} /></Box>
           <Box id="service-area"><ServiceArea /></Box>
           <Box id="pictures"><Pictures /></Box>
-          <Box id="reviews"><Reviews /></Box>
+          <Box id="reviews"><Reviews state={state} /></Box>
           <Box id="business-hours"><BusinessHours state={state} /></Box>
           <Copyright />
         </Box>

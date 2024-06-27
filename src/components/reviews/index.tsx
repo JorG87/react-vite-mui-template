@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Typography, Paper, Box, Rating, Stack, Avatar, Button, Divider, Pagination } from '@mui/material'
 import GoogleIcon from '@mui/icons-material/Google'
-
-const GOOGLE_PLACE_ID = 'ChIJb_dZ4AdB24gRlWhQ_YlWDiM'
+import { MainProps } from '../../common/entities'
 
 // Helper function to generate random reviews
 const generateReviews = (count: number) => {
@@ -24,7 +23,10 @@ const generateReviews = (count: number) => {
   }))
 }
 
-const Reviews: React.FC = () => {
+const Reviews: React.FC<MainProps> = (props: MainProps) => {
+  const state = props.state ?? null
+  const { PLACE_ID } = state || { GOOGLE_PLACE_ID: '' }
+
   const allReviews = generateReviews(50)
   const [page, setPage] = useState(1)
   const reviewsPerPage = 5
@@ -38,7 +40,7 @@ const Reviews: React.FC = () => {
   const displayedReviews = allReviews.slice((page - 1) * reviewsPerPage, page * reviewsPerPage)
 
   const handleWriteReview = () => {
-    const reviewUrl = `https://search.google.com/local/writereview?placeid=${GOOGLE_PLACE_ID}`
+    const reviewUrl = `https://search.google.com/local/writereview?placeid=${PLACE_ID}`
     window.open(reviewUrl, '_blank')
   };
 

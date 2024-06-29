@@ -62,13 +62,13 @@ const Reviews: React.FC<MainProps> = (props: MainProps) => {
         <Box>
           <Rating value={averageRating} readOnly precision={0.1} sx={{ color: '#FBBC05' }} />
           <Typography variant="body2" color="text.secondary">
-            {allReviews.length} reviews
+            {allReviews.length} {t('REVIEWS')}
           </Typography>
         </Box>
       </Box>
 
       <Button variant="contained" sx={{ mb: 2, textTransform: 'none' }} onClick={handleWriteReview}>
-        Write a review
+        {t('WRITE_REVIEW')}
       </Button>
 
       <Stack spacing={2} divider={<Divider flexItem />}>

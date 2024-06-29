@@ -14,4 +14,7 @@ export const max = {
   ABOUT_US_EMERGENCY_SERVICES: 'Emergency services',
   ABOUT_US_REPAIRS_GUARANTEED: 'Repairs guaranteed',
   GOOGLE_RATING: 'Google Rating',
+  WRITE_REVIEW: 'Write a review',
+  CONTACT_US: 'Contact Us',
+  OPEN_HOURS: 'We are open 24 hours a day, 7 days a week, including holidays.',
 }

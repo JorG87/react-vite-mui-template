@@ -14,6 +14,9 @@ export type TranslationKey =
   | 'ABOUT_US_EMERGENCY_SERVICES'
   | 'ABOUT_US_REPAIRS_GUARANTEED'
   | 'GOOGLE_RATING'
+  | 'WRITE_REVIEW'
+  | 'CONTACT_US'
+  | 'OPEN_HOURS'
 
 export type Translations = {
   [key in TranslationKey]: string;

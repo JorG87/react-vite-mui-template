@@ -19,4 +19,6 @@ export const max: Translations = {
   WRITE_REVIEW: 'Escribe una reseña',
   CONTACT_US: 'Contacta con nosotros',
   OPEN_HOURS: 'Estamos abiertos las 24 horas del día, los 7 días de la semana, incluidos festivos.',
+  LOADING: 'Loading...',
+  LOADING_IMAGES: 'Cargando imágenes...',
 }

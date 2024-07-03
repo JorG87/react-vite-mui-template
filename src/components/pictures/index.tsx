@@ -1,37 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { Suspense } from 'react'
 import { Typography, Paper, Box } from '@mui/material'
-import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { useTranslations } from '../../utils/useTranslations'
+import Loading from '../loading'
+import ImageSlider from '../imageslider'
 
-interface Photo {
-  img: string;
-  title: string;
+export interface Photo {
+  img: string
+  title: string
 }
 
 const Pictures: React.FC = () => {
   const { t } = useTranslations()
-  const [photos, setPhotos] = useState<Photo[]>([]);
-
-  useEffect(() => {
-    const loadImages = async () => {
-      const imageModules = import.meta.glob('../../assets/pictures/*.(png|jpeg|svg|gif)')
-      const loadedPhotos: Photo[] = []
-
-      for (const path in imageModules) {
-        const mod = await imageModules[path]() as { default: string };
-        loadedPhotos.push({
-          img: mod.default,
-          title: path.split('/').pop() || 'Untitled'
-        });
-      }
-
-      setPhotos(loadedPhotos);
-    };
-
-    loadImages();
-  }, []);
 
   const settings = {
     dots: true,
@@ -58,21 +39,9 @@ const Pictures: React.FC = () => {
     <Paper elevation={3} sx={{ p: 3, my: 2 }}>
       <Typography variant="h4" gutterBottom>{t('PICTURES')}</Typography>
       <Box sx={{ maxWidth: '100%', margin: 'auto' }}>
-        <Slider {...settings}>
-          {photos.map((photo, index) => (
-            <Box key={index} sx={{ width: '100%', height: '400px' }}>
-              <img 
-                src={photo.img} 
-                alt={photo.title} 
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  objectFit: 'cover' 
-                }} 
-              />
-            </Box>
-          ))}
-        </Slider>
+        <Suspense fallback={<Loading message={t('LOADING_IMAGES')} />}>
+          <ImageSlider settings={settings} />
+        </Suspense>
       </Box>
     </Paper>
   )

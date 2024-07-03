@@ -17,6 +17,8 @@ export type TranslationKey =
   | 'WRITE_REVIEW'
   | 'CONTACT_US'
   | 'OPEN_HOURS'
+  | 'LOADING'
+  | 'LOADING_IMAGES'
 
 export type Translations = {
   [key in TranslationKey]: string;

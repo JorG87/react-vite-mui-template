@@ -17,4 +17,6 @@ export const max = {
   WRITE_REVIEW: 'Write a review',
   CONTACT_US: 'Contact Us',
   OPEN_HOURS: 'We are open 24 hours a day, 7 days a week, including holidays.',
+  LOADING: 'Loading...',
+  LOADING_IMAGES: 'Loading pictures...',
 }
